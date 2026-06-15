@@ -1,6 +1,6 @@
 from utils.retriever import retriever
 
-def bowling_node(state):
+def trend_node(state):
 
     query = state["user_query"]
 
@@ -11,5 +11,5 @@ def bowling_node(state):
     )
 
     return {
-        "bowling_context": context
+        "trend_context": context
     }

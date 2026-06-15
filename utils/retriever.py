@@ -13,5 +13,5 @@ db = Chroma(
 )
 
 retriever = db.as_retriever(
-    search_kwargs={"k": 4}
+    search_kwargs={"k": 8}
 )

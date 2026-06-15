@@ -1,9 +1,4 @@
 from utils.retriever import retriever
-from utils.llm import get_llm
-
-llm = get_llm()
-
-
 def form_node(state):
 
     query = state["user_query"]
@@ -14,20 +9,8 @@ def form_node(state):
         doc.page_content for doc in docs
     )
 
-    prompt = f"""
-You are an IPL form analyst.
-
-Answer using only the context.
-
-Context:
-{context}
-
-Question:
-{query}
-"""
-
-    response = llm.invoke(prompt)
+    
 
     return {
-        "final_answer": response.content
+       "form_context": context
     }
