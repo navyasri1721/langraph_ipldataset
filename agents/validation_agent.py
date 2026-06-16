@@ -2,6 +2,7 @@ def validation_node(state):
 
     query = state["user_query"].lower()
 
+    # Out-of-scope questions
     out_of_scope_keywords = [
         "bcci",
         "world cup",
@@ -11,13 +12,25 @@ def validation_node(state):
         "ipl 2028"
     ]
 
-    for keyword in out_of_scope_keywords:
+    if any(keyword in query for keyword in out_of_scope_keywords):
+        return {
+            "final_answer":
+            "This question is outside the IPL dataset scope."
+        }
 
-        if keyword in query:
+    # Vague questions
+    vague_queries = [
+        "cricket",
+        "tell me everything about cricket",
+        "tell me about cricket",
+        "everything about cricket"
+    ]
 
-            return {
-                "final_answer":
-                "This question is outside the IPL dataset scope."
-            }
+    if query.strip() in vague_queries:
+        return {
+            "final_answer":
+            "Please ask a specific IPL-related question."
+        }
 
+    # Valid query
     return {}
