@@ -1,11 +1,11 @@
 from typing import TypedDict, List
 
 class IPLState(TypedDict, total=False):
-    user_query: str
 
+    user_query: str
     query_type: str
 
-    entities: List[str]
+    chat_history: List[str]
 
     team_context: str
     batting_context: str
@@ -15,7 +15,5 @@ class IPLState(TypedDict, total=False):
     form_context: str
     trend_context: str
     records_context: str
-
-    conflict_detected: bool
 
     final_answer: str
